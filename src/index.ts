@@ -1,13 +1,62 @@
 //display greeting, account options (add, withdraw, view, transfer)
 
+// 1. Created a class with constructor for bank accounts
+class BankAccount {
+    private balance: number = 0;
+
+    constructor(balance: number) {
+        this.balance = balance;
+    }
+
+    // 2. Created function to enable adding money from account
+    deposit(amount: number): void {
+        this.balance += amount;
+    }
+
+    // 3. Created function for withdrawing money from account, ensuring funds are sufficient to withdraw with if statement
+    withdraw(amount: number): void {
+        if(this.balance - amount < 0) {
+            throw new Error("Insufficient Funds")
+        } else {
+            this.balance -= amount;
+        }
+    }
+
+    // 4. Getter to display balance in account
+    getBalance() {
+        return this.balance;
+    }
+}
+
+const currentAccount = new BankAccount(5000);
+console.log("Account Balance: ", currentAccount.getBalance());
+
+currentAccount.deposit(1300);
+console.log("Account Balance: ", currentAccount.getBalance());
+
+currentAccount.withdraw(2000);
+console.log("Account Balance: ", currentAccount.getBalance());
+
+// currentAccount.withdraw(100000);
+// console.log("Account Balance: ", currentAccount.getBalance());
+
+// const savingsAccount = new BankAccount(50000);
+// console.log("Savings Balance: ", savingsAccount.getBalance());
+
+// savingsAccount.deposit(15000);
+// console.log("Savings Balance: ", savingsAccount.getBalance());
+
+// savingsAccount.withdraw(100);
+// console.log("Savings Balance: ", savingsAccount.getBalance());
+
+
+
+
+
 // Basic Operations
-//add money
-//withdraw money
-//get current balance
 //transfer to another account
 
 // Check Minimum Balance
-//ensure funds are sufficient to withdraw (throw error if not)
 
 // Interest
 // account has a % of interest
